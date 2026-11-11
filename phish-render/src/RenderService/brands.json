@@ -1,0 +1,1147 @@
+[
+  {
+    "name": "OLX",
+    "domains": [
+      "olx.ua",
+      "olx.com",
+      "olx.org",
+      "olx.pl",
+      "olxcdn.com",
+      "olx-st.com",
+      "olxgroup.com"
+    ],
+    "hostKeywords": [
+      "olx"
+    ],
+    "textKeywords": [
+      "olx",
+      "олх"
+    ]
+  },
+  {
+    "name": "Нова Пошта",
+    "domains": [
+      "novaposhta.ua",
+      "nova.global",
+      "novapost.com",
+      "novapay.ua"
+    ],
+    "hostKeywords": [
+      "novaposhta",
+      "nova-poshta",
+      "novaposta",
+      "novapost",
+      "novapay",
+      "nova-pay"
+    ],
+    "textKeywords": [
+      "нова пошта",
+      "нової пошти",
+      "новою поштою",
+      "новій пошті",
+      "новая почта",
+      "nova poshta",
+      "novapay"
+    ]
+  },
+  {
+    "name": "Укрпошта",
+    "domains": [
+      "ukrposhta.ua",
+      "ukrposhta.com"
+    ],
+    "hostKeywords": [
+      "ukrposhta",
+      "ukrpost",
+      "ukrpochta",
+      "ukr-poshta"
+    ],
+    "textKeywords": [
+      "укрпошта",
+      "укрпошти",
+      "укрпоштою",
+      "укрпочта",
+      "ukrposhta"
+    ]
+  },
+  {
+    "name": "Meest",
+    "domains": [
+      "meest.com",
+      "meest.ua",
+      "meest.us"
+    ],
+    "hostKeywords": [
+      "meest"
+    ],
+    "textKeywords": [
+      "meest"
+    ]
+  },
+  {
+    "name": "ПриватБанк",
+    "domains": [
+      "privatbank.ua",
+      "privat24.ua",
+      "pb.ua"
+    ],
+    "hostKeywords": [
+      "privat24",
+      "privat-24",
+      "privatbank",
+      "privat-bank",
+      "privatonline",
+      "privat-online"
+    ],
+    "textKeywords": [
+      "приватбанк",
+      "приват24",
+      "приват 24",
+      "privat24",
+      "privatbank"
+    ]
+  },
+  {
+    "name": "monobank",
+    "domains": [
+      "monobank.ua",
+      "universalbank.com.ua"
+    ],
+    "hostKeywords": [
+      "monobank",
+      "mono-bank"
+    ],
+    "textKeywords": [
+      "монобанк",
+      "monobank"
+    ]
+  },
+  {
+    "name": "Ощадбанк",
+    "domains": [
+      "oschadbank.ua"
+    ],
+    "hostKeywords": [
+      "oschad",
+      "oshchad"
+    ],
+    "textKeywords": [
+      "ощадбанк",
+      "ощад 24",
+      "ощад24",
+      "oschadbank"
+    ]
+  },
+  {
+    "name": "Райффайзен Банк",
+    "domains": [
+      "raiffeisen.ua",
+      "aval.ua"
+    ],
+    "hostKeywords": [
+      "raiffeisen",
+      "raif-"
+    ],
+    "textKeywords": [
+      "райффайзен",
+      "raiffeisen"
+    ]
+  },
+  {
+    "name": "ПУМБ",
+    "domains": [
+      "pumb.ua"
+    ],
+    "hostKeywords": [
+      "pumb"
+    ],
+    "textKeywords": [
+      "пумб"
+    ]
+  },
+  {
+    "name": "Дія / державні сервіси",
+    "domains": [
+      "gov.ua"
+    ],
+    "hostKeywords": [
+      "diia",
+      "diya",
+      "dija",
+      "edopomoga",
+      "edopomoha",
+      "epidtrymka",
+      "yepidtrymka",
+      "gov-ua",
+      "govua"
+    ],
+    "textKeywords": [
+      "єпідтримка",
+      "епідтримка",
+      "єпідтримки",
+      "епідтримки",
+      "єдопомога",
+      "єдопомоги",
+      "едопомога",
+      "дія.підпис",
+      "застосунку дія",
+      "застосунок дія",
+      "порталі дія",
+      "порталу дія",
+      "мінсоцполітики",
+      "пенсійного фонду",
+      "пенсійний фонд"
+    ]
+  },
+  {
+    "name": "Укрзалізниця",
+    "domains": [
+      "uz.gov.ua",
+      "uz-vezemo.com"
+    ],
+    "hostKeywords": [
+      "ukrzaliznytsia",
+      "ukrzaliznycia",
+      "uz-booking",
+      "uzbooking"
+    ],
+    "textKeywords": [
+      "укрзалізниця",
+      "укрзалізниці",
+      "укрзализныця"
+    ]
+  },
+  {
+    "name": "Київстар",
+    "domains": [
+      "kyivstar.ua",
+      "kyivstar.net",
+      "kyivstar.com"
+    ],
+    "hostKeywords": [
+      "kyivstar",
+      "kievstar"
+    ],
+    "textKeywords": [
+      "київстар",
+      "киевстар",
+      "kyivstar"
+    ]
+  },
+  {
+    "name": "Vodafone Україна",
+    "domains": [
+      "vodafone.ua",
+      "vodafone.com"
+    ],
+    "hostKeywords": [
+      "vodafone"
+    ],
+    "textKeywords": [
+      "vodafone",
+      "водафон"
+    ]
+  },
+  {
+    "name": "lifecell",
+    "domains": [
+      "lifecell.ua",
+      "lifecell.com.ua"
+    ],
+    "hostKeywords": [
+      "lifecell"
+    ],
+    "textKeywords": [
+      "lifecell",
+      "лайфсел"
+    ]
+  },
+  {
+    "name": "Rozetka",
+    "domains": [
+      "rozetka.com.ua",
+      "rozetka.ua"
+    ],
+    "hostKeywords": [
+      "rozetka"
+    ],
+    "textKeywords": [
+      "rozetka"
+    ]
+  },
+  {
+    "name": "Prom.ua",
+    "domains": [
+      "prom.ua"
+    ],
+    "hostKeywords": [
+      "prom-ua",
+      "promua"
+    ],
+    "textKeywords": [
+      "prom.ua"
+    ]
+  },
+  {
+    "name": "RIA (AUTO.RIA, DIM.RIA)",
+    "domains": [
+      "ria.com",
+      "ria.ua"
+    ],
+    "hostKeywords": [
+      "autoria",
+      "auto-ria",
+      "dimria",
+      "dim-ria"
+    ],
+    "textKeywords": [
+      "auto.ria",
+      "dim.ria",
+      "auto ria",
+      "dim ria"
+    ]
+  },
+  {
+    "name": "Kachorovska",
+    "domains": [
+      "kachorovska.com"
+    ],
+    "hostKeywords": [
+      "kachorovska"
+    ],
+    "textKeywords": [
+      "kachorovska",
+      "качоровська"
+    ]
+  },
+  {
+    "name": "Karabas",
+    "domains": [
+      "karabas.com",
+      "karabas.ua"
+    ],
+    "hostKeywords": [
+      "karabas"
+    ],
+    "textKeywords": [
+      "karabas",
+      "карабас"
+    ]
+  },
+  {
+    "name": "Буковель",
+    "domains": [
+      "bukovel.com"
+    ],
+    "hostKeywords": [
+      "bukovel"
+    ],
+    "textKeywords": [
+      "буковель",
+      "bukovel"
+    ]
+  },
+  {
+    "name": "АТБ",
+    "domains": [
+      "atbmarket.com",
+      "atb.ua"
+    ],
+    "hostKeywords": [
+      "atbmarket",
+      "atb-market",
+      "atb-ua"
+    ],
+    "textKeywords": [
+      "атб-маркет",
+      "атб маркет",
+      "atbmarket"
+    ]
+  },
+  {
+    "name": "OKKO",
+    "domains": [
+      "okko.ua"
+    ],
+    "hostKeywords": [
+      "okko"
+    ],
+    "textKeywords": [
+      "окко",
+      "okko"
+    ]
+  },
+  {
+    "name": "WOG",
+    "domains": [
+      "wog.ua"
+    ],
+    "hostKeywords": [
+      "wog-",
+      "wogua"
+    ],
+    "textKeywords": [
+      "wog"
+    ]
+  },
+  {
+    "name": "ДТЕК / YASNO",
+    "domains": [
+      "dtek.com",
+      "yasno.com.ua",
+      "yasno.ua"
+    ],
+    "hostKeywords": [
+      "dtek",
+      "yasno"
+    ],
+    "textKeywords": [
+      "дтек",
+      "dtek",
+      "yasno"
+    ]
+  },
+  {
+    "name": "Нафтогаз",
+    "domains": [
+      "naftogaz.com",
+      "gas.ua",
+      "104.ua"
+    ],
+    "hostKeywords": [
+      "naftogaz"
+    ],
+    "textKeywords": [
+      "нафтогаз",
+      "naftogaz"
+    ]
+  },
+  {
+    "name": "Укренерго",
+    "domains": [
+      "ua.energy"
+    ],
+    "hostKeywords": [
+      "ukrenergo"
+    ],
+    "textKeywords": [
+      "укренерго"
+    ]
+  },
+  {
+    "name": "Укрнафта",
+    "domains": [
+      "ukrnafta.com"
+    ],
+    "hostKeywords": [
+      "ukrnafta"
+    ],
+    "textKeywords": [
+      "укрнафта"
+    ]
+  },
+  {
+    "name": "CreditPlus",
+    "domains": [
+      "creditplus.ua"
+    ],
+    "hostKeywords": [
+      "creditplus",
+      "credit-plus"
+    ],
+    "textKeywords": [
+      "creditplus",
+      "кредитплюс"
+    ]
+  },
+  {
+    "name": "Moneyveo",
+    "domains": [
+      "moneyveo.ua"
+    ],
+    "hostKeywords": [
+      "moneyveo"
+    ],
+    "textKeywords": [
+      "moneyveo"
+    ]
+  },
+  {
+    "name": "MyCredit",
+    "domains": [
+      "mycredit.ua"
+    ],
+    "hostKeywords": [
+      "mycredit"
+    ],
+    "textKeywords": [
+      "mycredit"
+    ]
+  },
+  {
+    "name": "RADABANK",
+    "domains": [
+      "radabank.com.ua"
+    ],
+    "hostKeywords": [
+      "radabank"
+    ],
+    "textKeywords": [
+      "radabank",
+      "радабанк"
+    ]
+  },
+  {
+    "name": "Microsoft",
+    "domains": [
+      "microsoft.com",
+      "live.com",
+      "office.com",
+      "microsoftonline.com",
+      "outlook.com",
+      "microsoft365.com",
+      "bing.com",
+      "msn.com"
+    ],
+    "hostKeywords": [
+      "microsoft",
+      "office365",
+      "outlook",
+      "onedrive",
+      "msoffice"
+    ],
+    "textKeywords": [
+      "microsoft"
+    ]
+  },
+  {
+    "name": "PayPal",
+    "domains": [
+      "paypal.com",
+      "paypal.me"
+    ],
+    "hostKeywords": [
+      "paypal"
+    ],
+    "textKeywords": [
+      "paypal"
+    ]
+  },
+  {
+    "name": "Apple",
+    "domains": [
+      "apple.com",
+      "icloud.com"
+    ],
+    "hostKeywords": [
+      "appleid",
+      "apple-id",
+      "icloud",
+      "=apple"
+    ],
+    "textKeywords": [
+      "apple id",
+      "icloud"
+    ]
+  },
+  {
+    "name": "Meta (Facebook, Instagram, WhatsApp)",
+    "domains": [
+      "facebook.com",
+      "fb.com",
+      "meta.com",
+      "instagram.com",
+      "whatsapp.com",
+      "messenger.com",
+      "facebook.net"
+    ],
+    "hostKeywords": [
+      "facebook",
+      "instagram",
+      "whatsapp",
+      "meta-support",
+      "metabusiness"
+    ],
+    "textKeywords": [
+      "facebook",
+      "instagram",
+      "whatsapp"
+    ]
+  },
+  {
+    "name": "Telegram",
+    "domains": [
+      "telegram.org",
+      "t.me",
+      "telegram.me"
+    ],
+    "hostKeywords": [
+      "telegram",
+      "teleqram"
+    ],
+    "textKeywords": [
+      "telegram",
+      "телеграм"
+    ]
+  },
+  {
+    "name": "Netflix",
+    "domains": [
+      "netflix.com"
+    ],
+    "hostKeywords": [
+      "netflix"
+    ],
+    "textKeywords": [
+      "netflix"
+    ]
+  },
+  {
+    "name": "DHL",
+    "domains": [
+      "dhl.com",
+      "dhl.de"
+    ],
+    "hostKeywords": [
+      "dhl"
+    ],
+    "textKeywords": [
+      "dhl express",
+      "dhl"
+    ]
+  },
+  {
+    "name": "Amazon",
+    "domains": [
+      "amazon.com",
+      "amazon.de",
+      "amazon.co.uk",
+      "amazon.pl",
+      "amazon.es",
+      "amazon.it",
+      "amazon.fr",
+      "media-amazon.com"
+    ],
+    "hostKeywords": [
+      "amazon",
+      "amzn"
+    ],
+    "textKeywords": [
+      "amazon"
+    ]
+  },
+  {
+    "name": "Steam",
+    "domains": [
+      "steampowered.com",
+      "steamcommunity.com"
+    ],
+    "hostKeywords": [
+      "steamcommunity",
+      "steampowered",
+      "steam-community",
+      "steamcommunlty"
+    ],
+    "textKeywords": [
+      "steam"
+    ]
+  },
+  {
+    "name": "Криптобіржі та гаманці",
+    "domains": [
+      "binance.com",
+      "coinbase.com",
+      "metamask.io",
+      "trustwallet.com",
+      "kraken.com",
+      "bybit.com",
+      "okx.com",
+      "whitebit.com",
+      "kuna.io"
+    ],
+    "hostKeywords": [
+      "binance",
+      "coinbase",
+      "metamask",
+      "trustwallet",
+      "bybit",
+      "whitebit"
+    ],
+    "textKeywords": [
+      "binance",
+      "coinbase",
+      "metamask",
+      "trust wallet",
+      "bybit",
+      "whitebit"
+    ]
+  },
+  {
+    "name": "Allegro / Allegro Lokalnie",
+    "domains": [
+      "allegro.pl",
+      "allegrolokalnie.pl",
+      "allegro.cz",
+      "allegro.sk",
+      "allegro.hu",
+      "allegrostatic.com",
+      "allegroimg.com"
+    ],
+    "hostKeywords": [
+      "allegro"
+    ],
+    "textKeywords": [
+      "allegro"
+    ]
+  },
+  {
+    "name": "InPost",
+    "domains": [
+      "inpost.pl",
+      "inpost.eu",
+      "inpost.ua"
+    ],
+    "hostKeywords": [
+      "inpost"
+    ],
+    "textKeywords": [
+      "inpost",
+      "paczkomat"
+    ]
+  },
+  {
+    "name": "DPD",
+    "domains": [
+      "dpd.com",
+      "dpd.pl",
+      "dpd.ua",
+      "dpd.de",
+      "dpd.co.uk"
+    ],
+    "hostKeywords": [
+      "dpd"
+    ],
+    "textKeywords": [
+      "dpd"
+    ]
+  },
+  {
+    "name": "Poczta Polska",
+    "domains": [
+      "poczta-polska.pl",
+      "pocztex.pl",
+      "envelo.pl"
+    ],
+    "hostKeywords": [
+      "poczta-polska",
+      "pocztapolska",
+      "pocztex"
+    ],
+    "textKeywords": [
+      "poczta polska",
+      "pocztex"
+    ]
+  },
+  {
+    "name": "Vinted",
+    "domains": [
+      "vinted.com",
+      "vinted.pl",
+      "vinted.de",
+      "vinted.lt",
+      "vinted.cz",
+      "vinted.fr"
+    ],
+    "hostKeywords": [
+      "vinted"
+    ],
+    "textKeywords": [
+      "vinted"
+    ]
+  },
+  {
+    "name": "Roblox",
+    "domains": [
+      "roblox.com",
+      "rbxcdn.com"
+    ],
+    "hostKeywords": [
+      "roblox",
+      "rob1ox",
+      "robiox"
+    ],
+    "textKeywords": [
+      "roblox"
+    ]
+  },
+  {
+    "name": "Trezor",
+    "domains": [
+      "trezor.io"
+    ],
+    "hostKeywords": [
+      "trezor",
+      "trezr",
+      "trezzor"
+    ],
+    "textKeywords": [
+      "trezor"
+    ]
+  },
+  {
+    "name": "Ledger",
+    "domains": [
+      "ledger.com"
+    ],
+    "hostKeywords": [
+      "ledgerlive",
+      "ledger-live",
+      "ledgerwallet",
+      "ledger-wallet"
+    ],
+    "textKeywords": [
+      "ledger live"
+    ]
+  },
+  {
+    "name": "Adobe",
+    "domains": [
+      "adobe.com",
+      "adobelogin.com",
+      "acrobat.com",
+      "adobe.io"
+    ],
+    "hostKeywords": [
+      "adobe"
+    ],
+    "textKeywords": [
+      "adobe"
+    ]
+  },
+  {
+    "name": "DocuSign",
+    "domains": [
+      "docusign.com",
+      "docusign.net"
+    ],
+    "hostKeywords": [
+      "docusign",
+      "docu-sign"
+    ],
+    "textKeywords": [
+      "docusign"
+    ]
+  },
+  {
+    "name": "Zoom",
+    "domains": [
+      "zoom.us",
+      "zoom.com",
+      "zoomgov.com"
+    ],
+    "hostKeywords": [
+      "zoom.us",
+      "zoom-us",
+      "zoomus",
+      "zoom-meeting",
+      "zoommeeting",
+      "zoom-video",
+      "=zoom"
+    ],
+    "textKeywords": [
+      "zoom meeting",
+      "zoom.us",
+      "zoom workplace"
+    ]
+  },
+  {
+    "name": "FedEx",
+    "domains": [
+      "fedex.com"
+    ],
+    "hostKeywords": [
+      "fedex"
+    ],
+    "textKeywords": [
+      "fedex"
+    ]
+  },
+  {
+    "name": "USPS",
+    "domains": [
+      "usps.com"
+    ],
+    "hostKeywords": [
+      "usps"
+    ],
+    "textKeywords": [
+      "usps"
+    ]
+  },
+  {
+    "name": "eBay",
+    "domains": [
+      "ebay.com",
+      "ebay.de",
+      "ebay.co.uk",
+      "ebay.pl",
+      "ebayimg.com"
+    ],
+    "hostKeywords": [
+      "ebay"
+    ],
+    "textKeywords": [
+      "ebay"
+    ]
+  },
+  {
+    "name": "Alibaba / AliExpress",
+    "domains": [
+      "alibaba.com",
+      "aliexpress.com",
+      "aliexpress.ru",
+      "alibaba-inc.com",
+      "alicdn.com"
+    ],
+    "hostKeywords": [
+      "alibaba",
+      "aliexpress"
+    ],
+    "textKeywords": [
+      "alibaba",
+      "aliexpress"
+    ]
+  },
+  {
+    "name": "Klarna",
+    "domains": [
+      "klarna.com"
+    ],
+    "hostKeywords": [
+      "klarna"
+    ],
+    "textKeywords": [
+      "klarna"
+    ]
+  },
+  {
+    "name": "Wells Fargo",
+    "domains": [
+      "wellsfargo.com"
+    ],
+    "hostKeywords": [
+      "wellsfargo",
+      "wells-fargo"
+    ],
+    "textKeywords": [
+      "wells fargo"
+    ]
+  },
+  {
+    "name": "Santander",
+    "domains": [
+      "santander.com",
+      "santander.pl",
+      "santander.co.uk",
+      "santander.es",
+      "santander.com.br",
+      "santander.de"
+    ],
+    "hostKeywords": [
+      "santander"
+    ],
+    "textKeywords": [
+      "santander"
+    ]
+  },
+  {
+    "name": "Xfinity / Comcast",
+    "domains": [
+      "xfinity.com",
+      "comcast.net",
+      "comcast.com"
+    ],
+    "hostKeywords": [
+      "xfinity",
+      "comcast"
+    ],
+    "textKeywords": [
+      "xfinity",
+      "comcast"
+    ]
+  },
+  {
+    "name": "Chase",
+    "domains": [
+      "chase.com",
+      "jpmorganchase.com"
+    ],
+    "hostKeywords": [
+      "chasebank",
+      "chase-bank",
+      "chaseonline",
+      "chase-online",
+      "=chase"
+    ],
+    "textKeywords": [
+      "chase bank",
+      "jpmorgan chase"
+    ]
+  },
+  {
+    "name": "Bank of America",
+    "domains": [
+      "bankofamerica.com"
+    ],
+    "hostKeywords": [
+      "bankofamerica",
+      "bank-of-america",
+      "bofa-"
+    ],
+    "textKeywords": [
+      "bank of america"
+    ]
+  },
+  {
+    "name": "LinkedIn",
+    "domains": [
+      "linkedin.com",
+      "lnkd.in",
+      "licdn.com"
+    ],
+    "hostKeywords": [
+      "linkedin"
+    ],
+    "textKeywords": [
+      "linkedin"
+    ]
+  },
+  {
+    "name": "Dropbox",
+    "domains": [
+      "dropbox.com",
+      "dropboxstatic.com"
+    ],
+    "hostKeywords": [
+      "dropbox"
+    ],
+    "textKeywords": [
+      "dropbox"
+    ]
+  },
+  {
+    "name": "Spotify",
+    "domains": [
+      "spotify.com",
+      "scdn.co",
+      "spotifycdn.com"
+    ],
+    "hostKeywords": [
+      "spotify"
+    ],
+    "textKeywords": [
+      "spotify"
+    ]
+  },
+  {
+    "name": "OpenAI / ChatGPT",
+    "domains": [
+      "openai.com",
+      "chatgpt.com",
+      "oaistatic.com",
+      "oaiusercontent.com"
+    ],
+    "hostKeywords": [
+      "openai",
+      "chatgpt"
+    ],
+    "textKeywords": [
+      "openai",
+      "chatgpt"
+    ]
+  },
+  {
+    "name": "Bradesco",
+    "domains": [
+      "bradesco.com.br"
+    ],
+    "hostKeywords": [
+      "bradesco"
+    ],
+    "textKeywords": [
+      "bradesco"
+    ]
+  },
+  {
+    "name": "Itaú",
+    "domains": [
+      "itau.com.br"
+    ],
+    "hostKeywords": [
+      "=itau",
+      "itau-"
+    ],
+    "textKeywords": [
+      "itaú"
+    ]
+  },
+  {
+    "name": "Caixa",
+    "domains": [
+      "caixa.gov.br"
+    ],
+    "hostKeywords": [
+      "caixa"
+    ],
+    "textKeywords": [
+      "caixa econômica",
+      "caixa economica"
+    ]
+  },
+  {
+    "name": "Banco do Brasil",
+    "domains": [
+      "bb.com.br"
+    ],
+    "hostKeywords": [
+      "bancodobrasil",
+      "banco-do-brasil"
+    ],
+    "textKeywords": [
+      "banco do brasil"
+    ]
+  },
+  {
+    "name": "Nubank",
+    "domains": [
+      "nubank.com.br",
+      "nu.com.mx"
+    ],
+    "hostKeywords": [
+      "nubank"
+    ],
+    "textKeywords": [
+      "nubank"
+    ]
+  },
+  {
+    "name": "Google",
+    "domains": [
+      "google.com",
+      "google.com.ua",
+      "gmail.com",
+      "youtube.com",
+      "googleapis.com",
+      "gstatic.com",
+      "googleusercontent.com",
+      "goo.gl"
+    ],
+    "hostKeywords": [
+      "google",
+      "gmail"
+    ],
+    "textKeywords": [
+      "google"
+    ]
+  }
+]

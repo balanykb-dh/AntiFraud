@@ -1,0 +1,21 @@
+# Секрети: ніколи не комітити
+tg-bot-api
+api-key
+.env
+**/monitor/telegram.env
+
+# Результати прогонів: дані клієнтів і скриншоти фішингу, великі
+audit-*/
+eval-results-*/
+render-results-*/
+result-vps.json
+shot-vps.jpg
+*.log
+
+# Збірка і службове
+*.tar.gz
+bin/
+obj/
+__pycache__/
+.DS_Store
+.vscode/

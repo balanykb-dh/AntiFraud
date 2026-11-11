@@ -1,0 +1,14 @@
+{
+  "brand": "kachorovska",
+  "display_name": "Kachorovska",
+  "official": ["kachorovska.com"],
+  "extra": ["fbkachorovska.top"],
+  "ignore": {
+    "kachorovska.com.ua": "захисний домен бренду, веде на kachorovska.com",
+    "kaczorowska.com": "польське прізвище, до бренду не стосується",
+    "crevv.com": "портфоліо дизайн-студії CREVV з брендбуком Kachorovska",
+    "kachorovskaphotographer.com": "сайт фотографа"
+  },
+  "client_chats": [],
+  "client_digest": false
+}

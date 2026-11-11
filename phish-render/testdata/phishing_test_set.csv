@@ -1,0 +1,63 @@
+id,label,url_defanged,impersonates,feature,year,source
+1,phishing,chis-gos[.]top,"компенсації, єДопомога",зона .top,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+2,phishing,compensationukr[.]com,"компенсації, єДопомога",слово compensation,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+3,phishing,ec-compensation[.]xyz,"компенсації, єДопомога",зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+4,phishing,edopomogaonline.yolasite[.]com,єДопомога,конструктор Yola,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+5,phishing,erinekenney[.]com,"компенсації, єДопомога",домен без зв'язку з темою,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+6,phishing,fanlnk[.]to/uagovnew2,держвиплати,скорочувач посилань,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+7,phishing,hardingtwominuterule[.]com,"компенсації, єДопомога",домен без зв'язку з темою,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+8,phishing,korrespondentnet.webflow[.]io,видання Кореспондент,конструктор Webflow,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+9,phishing,lnk.ukr-compens[.]xyz,компенсації,"піддомен lnk, зона .xyz",2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+10,phishing,mygraphbook[.]com,"компенсації, єДопомога",домен без зв'язку з темою,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+11,phishing,myua-compensations[.]xyz,компенсації,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+12,phishing,off.ukr-compens[.]xyz,компенсації,"піддомен off, зона .xyz",2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+13,phishing,oon24opros.yolasite[.]com,"ООН, опитування",конструктор Yola,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+14,phishing,pay.ukr-compens[.]xyz,компенсації,"піддомен pay, зона .xyz",2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+15,phishing,pro-gos[.]top,держвиплати,зона .top,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+16,phishing,tax-compensation[.]xyz,податкова компенсація,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+17,phishing,tax-compenses[.]xyz,податкова компенсація,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+18,phishing,uabayrakua[.]com,"компенсації, єДопомога",власний домен .com,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+19,phishing,ua-compens[.]top,компенсації,зона .top,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+20,phishing,ua-compensation[.]top,компенсації,зона .top,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+21,phishing,ua-compensations[.]xyz,компенсації,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+22,phishing,ua-compenses[.]top,компенсації,зона .top,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+23,phishing,uadop.webflow[.]io,допомога,конструктор Webflow,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+24,phishing,uam-compensation[.]xyz,компенсації,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+25,phishing,uatax-compens[.]xyz,податкова компенсація,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+26,phishing,uatax-compenses[.]xyz,податкова компенсація,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+27,phishing,ua-taxes-compens[.]xyz,податкова компенсація,зона .xyz,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+28,phishing,ukrahelpforall.ucraft[.]site,допомога,конструктор Ucraft,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+29,phishing,ukrainebayra[.]com,"компенсації, єДопомога",власний домен .com,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+30,phishing,ukrainecenter.yolasite[.]com,"компенсації, єДопомога",конструктор Yola,2022,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136
+31,phishing,hxxps://ukrposhta.ycthsyl[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+32,phishing,hxxps://ukrposhta.cnnixx[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+33,phishing,hxxps://ukrposhta.hbyagb[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+34,phishing,hxxps://ukrposhta.siwxck[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+35,phishing,hxxps://ukrposhta.shgbsyl[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+36,phishing,hxxps://ukrposhta.zsitrz[.]com,Укрпошта,бренд у піддомені випадкового домену,2023,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+37,phishing,olx.ua.dostavka24[.]rent,OLX Доставка,"olx.ua як піддомен, зона .rent",2026,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+38,phishing,olx-pay[.]site,OLX Доставка,"бренд плюс pay, зона .site",2026,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+39,phishing,olx.ua[.]help,OLX Доставка,офіційне ім'я перед чужою зоною .help,2026,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+40,phishing,verip4ynetdrivecatchboosthub.workers[.]dev,OLX Доставка,"Cloudflare Workers, бренду в адресі немає",2026,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+41,phishing,tineg60775.workers[.]dev,OLX Доставка,"Cloudflare Workers, бренду в адресі немає",2026,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+42,phishing,hxxp://winflor[.]cf/novaposhta,акція Нової Пошти,"зона .cf, бренд у шляху",2021,https://epravda.com.ua/news/2021/10/22/678967/
+43,phishing,hxxp://giftled[.]ml/novaposhta,акція Нової Пошти,"зона .ml, бренд у шляху",2021,https://epravda.com.ua/news/2021/10/22/678967/
+44,phishing,hxxp://clicktai[.]cf/novaposhta,акція Нової Пошти,"зона .cf, бренд у шляху",2021,https://epravda.com.ua/news/2021/10/22/678967/
+45,phishing,hxxp://wintent[.]tk/novaposhta,акція Нової Пошти,"зона .tk, бренд у шляху",2021,https://epravda.com.ua/news/2021/10/22/678967/
+46,phishing,hxxps://clicktoprize[.]site/93a05a1/postback?subid=,акція Нової Пошти,"трекер редиректів, слово prize",2021,https://epravda.com.ua/news/2021/10/22/678967/
+47,phishing,nova-poshta[.]top,Нова Пошта,"тайпосквот із дефісом, зона .top",2021,https://epravda.com.ua/news/2021/10/22/678967/
+48,phishing,fbkachorovska[.]top,Kachorovska,"бренд із префіксом fb, зона .top",,https://komersant.ua/en/shahrai-maskuyutsya-pid-kachorovska-brend-poperediv-pro-fejkovij-sajt-iz-znizhkami-do-90/
+49,phishing,p-invest[.]site,ПриватБанк,"айдентика банку без бренду в адресі, зона .site",до 2023,https://news.dtkt.ua/finance/bank-system/70862
+50,phishing,cert-ua[.]tech,CERT-UA,"клон державного сайту, зона .tech",2026,https://www.anti-malware.ru/news/2026-04-02-111332/49589
+51,legit,olx[.]ua,OLX,офіційний домен,,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+52,legit,m.olx[.]ua,OLX,офіційний мобільний домен,,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+53,legit,ua.login.olx[.]com,OLX,офіційний домен входу,,https://dev.ua/news/armiia-vorkeriv-cherez-viber-i-telegram-botiv-spustoshuie-kartky-ukraintsiv-1785310732
+54,legit,ukrposhta[.]ua,Укрпошта,офіційний домен,,https://gazeta.ua/articles/life/_ukrayinciv-poperedili-pro-novu-shemu-internetshahrajstva-vid-imeni-ukrposhti/1146399
+55,legit,novaposhta[.]ua,Нова Пошта,офіційний домен,,https://www.obozrevatel.com/ukr/ekonomika-glavnaya/economy/shahrai-pid-viglyadom-novoi-poshti-atakuvali-ukraintsiv-scho-robiti-tim-hto-vidkriv-nebezpechnij-list.htm
+56,legit,privat24[.]ua,ПриватБанк,офіційний домен,,https://privatbank.ua/en/news/2018/7/17/privatbank-poperediv-kliyentiv-pro-novu-shemu-shahraystva-z-vikoristannyam-pidroblenogo-saytu-privat24
+57,legit,privatbank[.]ua,ПриватБанк,офіційний домен,,https://news.dtkt.ua/finance/bank-system/75979-oberezno-ziavilisia-feikovi-saiti-privatbanku
+58,legit,monobank[.]ua,monobank,офіційний домен,,https://i.factor.ua/promo/yak-pereviryty-sayt-na-nadiynist-7-oznak-na-yaki-varto-zvernuty-uvahu-pered-vvedennyam-danykh.html
+59,legit,raiffeisen[.]ua,Райффайзен Банк,офіційний домен (онлайн-банк aval.ua більше не існує),,https://kosht.media/uvaha-shakhrai-namahaiutsia-otrymaty-dostup-do-onlayn-bankinhu-kliientiv-rayffayzena/
+60,legit,kachorovska[.]com,Kachorovska,офіційний домен,,https://komersant.ua/en/shahrai-maskuyutsya-pid-kachorovska-brend-poperediv-pro-fejkovij-sajt-iz-znizhkami-do-90/
+61,legit,diia.gov[.]ua,Дія,офіційний домен,,https://news.dtkt.ua/society/community/111824-nova-kiberataka-2026-roku-saxrayi-maskuiutsia-pid-diiu
+62,legit,cert.gov[.]ua,CERT-UA,офіційний домен,,https://dev.ua/news/shahrayi-grabuut-ukrayintsiv-vid-imeni-diyi-ta-zelenskogo-perelik-saitiv-yaki-1662016136

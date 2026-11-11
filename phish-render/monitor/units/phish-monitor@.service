@@ -1,0 +1,11 @@
+[Unit]
+Description=Моніторинг клонів бренду %i
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=@DIR@
+ExecStart=/usr/bin/python3 @DIR@/tools/monitor.py --brand %i
+TimeoutStartSec=45min
+Nice=5

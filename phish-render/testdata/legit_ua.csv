@@ -1,0 +1,41 @@
+id,label,url_defanged,impersonates,feature,year,source
+L1,legit,pravda[.]com[.]ua,Українська правда,новини,,manual
+L2,legit,ukr[.]net,ukr.net,новини і пошта,,manual
+L3,legit,unian[.]ua,УНІАН,новини,,manual
+L4,legit,tsn[.]ua,ТСН,новини,,manual
+L5,legit,nv[.]ua,НВ,новини,,manual
+L6,legit,epravda[.]com[.]ua,Економічна правда,новини,,manual
+L7,legit,dev[.]ua,dev.ua,ІТ-медіа,,manual
+L8,legit,ain[.]ua,AIN,ІТ-медіа,,manual
+L9,legit,dou[.]ua,DOU,ІТ-спільнота з логіном,,manual
+L10,legit,minfin[.]com[.]ua,Мінфін,фінанси,,manual
+L11,legit,work[.]ua,Work.ua,робота,,manual
+L12,legit,robota[.]ua,robota.ua,робота,,manual
+L13,legit,djinni[.]co,Djinni,робота,,manual
+L14,legit,epicentrk[.]ua,Епіцентр,магазин,,manual
+L15,legit,comfy[.]ua,Comfy,магазин,,manual
+L16,legit,foxtrot[.]com[.]ua,Фокстрот,магазин,,manual
+L17,legit,allo[.]ua,Алло,магазин,,manual
+L18,legit,makeup[.]com[.]ua,MAKEUP,магазин,,manual
+L19,legit,eva[.]ua,EVA,магазин,,manual
+L20,legit,kasta[.]ua,Kasta,магазин,,manual
+L21,legit,hotline[.]ua,Hotline,порівняння цін,,manual
+L22,legit,silpo[.]ua,Сільпо,супермаркет,,manual
+L23,legit,megogo[.]net,MEGOGO,стримінг,,manual
+L24,legit,sweet[.]tv,SWEET.TV,стримінг,,manual
+L25,legit,uklon[.]com[.]ua,Uklon,таксі,,manual
+L26,legit,tickets[.]ua,Tickets.ua,квитки,,manual
+L27,legit,busfor[.]ua,Busfor,квитки,,manual
+L28,legit,concert[.]ua,Concert.ua,квитки,,manual
+L29,legit,multiplex[.]ua,Multiplex,кіно,,manual
+L30,legit,ukrsibbank[.]com,УКРСИББАНК,банк,,manual
+L31,legit,sensebank[.]com[.]ua,Sense Bank,банк,,manual
+L32,legit,a-bank[.]com[.]ua,А-Банк,банк,,manual
+L33,legit,izibank[.]com[.]ua,izibank,банк,,manual
+L34,legit,ukrgasbank[.]com,Укргазбанк,банк,,manual
+L35,legit,otpbank[.]com[.]ua,ОТП Банк,банк,,manual
+L36,legit,portmone[.]com[.]ua,Portmone,платежі з полем картки,,manual
+L37,legit,easypay[.]ua,EasyPay,платежі з полем картки,,manual
+L38,legit,ipay[.]ua,iPay,платежі з полем картки,,manual
+L39,legit,liqpay[.]ua,LiqPay,платежі,,manual
+L40,legit,korrespondent[.]net,Кореспондент,новини (оригінал клону з набору),,manual

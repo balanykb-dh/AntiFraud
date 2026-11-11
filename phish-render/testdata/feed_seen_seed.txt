@@ -1,0 +1,36 @@
+# Домени з фіду phishunt.io, на яких налаштовували правила 9 листопада 2026.
+# fetch_feed.py їх пропускає, щоб наступні оцінки були на нових адресах.
+465378-coinbase.com
+85723.sbs
+aukcja8279.shop
+binanceapi.bet
+coinbase.com.lc
+dpd-xelvora.com
+emekastudios.co.za
+facebookhoutaifuwu.shop
+fifa-careerhub.com
+glovonetwork.com
+jesienne-oferty-84712.cfd
+m-facebookk.com.vn
+map-supports.com
+microsoft-winupdate.com
+my-settings-google.com
+ogoszenie-7827561.sbs
+paypal-com-aspi-dll.us
+pl-459876234.lol
+pl-numerbiletu32138491.sbs
+pl-oferta723106578.sbs
+pl194.sbs
+roblox.com.kz
+santandersupportchat.com
+webchat-whatsapp.com
+whatsappr.cc
+whatsappsdzuan.icu
+bet-facebook.blogspot.com
+facebook-links.blogspot.com
+brad-facebook.blogspot.com
+facebook-pt.blogspot.com
+io-startt-trezr-eng.pages.dev
+instagram-jordan-reallynguyen.vercel.app
+instagram-jordan.vercel.app
+sign-in-to-xfinity-3643.weebly.com

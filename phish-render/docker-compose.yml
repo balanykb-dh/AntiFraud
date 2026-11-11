@@ -1,0 +1,43 @@
+name: phish-render
+
+services:
+  render:
+    build: .
+    image: phish-render:latest
+    restart: unless-stopped
+    env_file: .env
+    # Only reachable from the VPS itself (or through an SSH tunnel), never from the internet.
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - render_net
+    # Public resolvers: a provider's private resolver would be blocked by the egress firewall.
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    init: true                 # reaps orphaned Chromium processes
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m
+    shm_size: "512m"
+    mem_limit: ${RENDER_MEM_LIMIT:-2g}
+    pids_limit: 768
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  render_net:
+    driver: bridge
+    driver_opts:
+      # Fixed name so firewall/render-egress.sh can match it.
+      com.docker.network.bridge.name: br-render
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

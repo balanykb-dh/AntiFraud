@@ -1,0 +1,12 @@
+.env
+bin/
+obj/
+render_out/
+result.json
+shot.jpg
+*.tar.gz
+api-key
+monitor/telegram.env
+monitor/state/
+monitor/runs/
+monitor/.lock

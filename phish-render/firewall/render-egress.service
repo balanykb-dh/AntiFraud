@@ -1,0 +1,13 @@
+[Unit]
+Description=Egress isolation for the phishing render container
+After=docker.service
+Requires=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/render-egress.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=docker.service

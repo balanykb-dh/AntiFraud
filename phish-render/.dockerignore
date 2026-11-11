@@ -1,0 +1,13 @@
+.env
+**/bin/
+**/obj/
+render_out/
+testdata/
+tools/
+firewall/
+*.jpg
+*.png
+result.json
+*.tar.gz
+api-key
+monitor/

@@ -1,0 +1,10 @@
+[Unit]
+Description=Щоденний моніторинг клонів бренду %i
+
+[Timer]
+OnCalendar=*-*-* 07:40:00 Europe/Kyiv
+RandomizedDelaySec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
