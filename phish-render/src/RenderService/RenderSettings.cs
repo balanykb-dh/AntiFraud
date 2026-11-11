@@ -17,6 +17,9 @@ public sealed class RenderSettings
     /// <summary>Hard cap on Claude calls per UTC day; beyond it verdicts fall back to rules only.</summary>
     public int LlmDailyLimit { get; init; } = 300;
 
+    /// <summary>Separate daily cap for brand audits (requests with llmPool = "audit").</summary>
+    public int LlmAuditDailyLimit { get; init; } = 2000;
+
     public static RenderSettings FromEnvironment()
     {
         var key = Environment.GetEnvironmentVariable("RENDER_API_KEY");
@@ -40,6 +43,7 @@ public sealed class RenderSettings
             AnthropicApiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")?.Trim(),
             LlmModel = string.IsNullOrWhiteSpace(model) ? "claude-haiku-5-5" : model.Trim(),
             LlmDailyLimit = Int("LLM_DAILY_LIMIT", 300, 0, 100_000),
+            LlmAuditDailyLimit = Int("LLM_AUDIT_DAILY_LIMIT", 2000, 0, 100_000),
         };
     }
 

@@ -16,7 +16,7 @@ public sealed class VerdictEngine
         _llm = llm;
     }
 
-    public async Task<CheckResult> EvaluateAsync(RenderResult render, bool useLlm, CancellationToken ct)
+    public async Task<CheckResult> EvaluateAsync(RenderResult render, bool useLlm, CancellationToken ct, bool auditPool = false)
     {
         var requestedHost = DomainTools.HostOf(render.RequestedUrl) ?? "";
         var finalHost = DomainTools.HostOf(render.FinalUrl) ?? requestedHost;
@@ -63,7 +63,7 @@ public sealed class VerdictEngine
             return result;
         }
 
-        var opinion = await _llm.JudgeAsync(render, ct);
+        var opinion = await _llm.JudgeAsync(render, auditPool, ct);
         result.Llm = opinion;
         if (opinion.Error is not null)
         {

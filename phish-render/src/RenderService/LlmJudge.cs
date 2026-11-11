@@ -43,48 +43,22 @@ public sealed class LlmJudge
 
     public bool Enabled => !string.IsNullOrWhiteSpace(_settings.AnthropicApiKey);
 
-    private readonly object _quotaLock = new();
-    private DateOnly _quotaDay;
-    private int _callsToday;
+    private readonly DailyQuota _main = new();
+    private readonly DailyQuota _audit = new();
 
     /// <summary>Calls made today (UTC) out of LLM_DAILY_LIMIT.</summary>
-    public int CallsToday
+    public int CallsToday => _main.Used;
+
+    /// <summary>Calls made today (UTC) by brand audits out of LLM_AUDIT_DAILY_LIMIT.</summary>
+    public int AuditCallsToday => _audit.Used;
+
+    public async Task<LlmOpinion> JudgeAsync(RenderResult r, bool auditPool, CancellationToken ct)
     {
-        get
+        var limit = auditPool ? _settings.LlmAuditDailyLimit : _settings.LlmDailyLimit;
+        if (!(auditPool ? _audit : _main).TryTake(limit))
         {
-            lock (_quotaLock)
-            {
-                return _quotaDay == DateOnly.FromDateTime(DateTime.UtcNow) ? _callsToday : 0;
-            }
-        }
-    }
-
-    private bool TryTakeQuota()
-    {
-        lock (_quotaLock)
-        {
-            var today = DateOnly.FromDateTime(DateTime.UtcNow);
-            if (today != _quotaDay)
-            {
-                _quotaDay = today;
-                _callsToday = 0;
-            }
-
-            if (_callsToday >= _settings.LlmDailyLimit)
-            {
-                return false;
-            }
-
-            _callsToday++;
-            return true;
-        }
-    }
-
-    public async Task<LlmOpinion> JudgeAsync(RenderResult r, CancellationToken ct)
-    {
-        if (!TryTakeQuota())
-        {
-            return new LlmOpinion { Model = _settings.LlmModel, Error = $"daily_limit ({_settings.LlmDailyLimit} викликів на день)" };
+            var pool = auditPool ? "аудит, " : "";
+            return new LlmOpinion { Model = _settings.LlmModel, Error = $"daily_limit ({pool}{limit} викликів на день)" };
         }
 
         var content = new List<object> { new { type = "text", text = Describe(r) } };
@@ -310,4 +284,44 @@ public sealed class LlmJudge
     }
 
     private static string Truncate(string s, int max) => s.Length <= max ? s : s[..max];
+}
+
+/// <summary>Thread-safe call counter that resets at UTC midnight.</summary>
+internal sealed class DailyQuota
+{
+    private readonly object _lock = new();
+    private DateOnly _day;
+    private int _used;
+
+    public int Used
+    {
+        get
+        {
+            lock (_lock)
+            {
+                return _day == DateOnly.FromDateTime(DateTime.UtcNow) ? _used : 0;
+            }
+        }
+    }
+
+    public bool TryTake(int limit)
+    {
+        lock (_lock)
+        {
+            var today = DateOnly.FromDateTime(DateTime.UtcNow);
+            if (today != _day)
+            {
+                _day = today;
+                _used = 0;
+            }
+
+            if (_used >= limit)
+            {
+                return false;
+            }
+
+            _used++;
+            return true;
+        }
+    }
 }

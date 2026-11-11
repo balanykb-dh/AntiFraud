@@ -67,6 +67,8 @@ app.MapGet("/health", (BrowserHost host, LlmJudge llm) => Results.Ok(new
     llm = llm.Enabled ? settings.LlmModel : "off",
     llmCallsToday = llm.CallsToday,
     llmDailyLimit = settings.LlmDailyLimit,
+    llmAuditCallsToday = llm.AuditCallsToday,
+    llmAuditDailyLimit = settings.LlmAuditDailyLimit,
 }));
 
 app.MapPost("/render", async (RenderRequest req, PageRenderer renderer, ILogger<PageRenderer> log, CancellationToken ct) =>
@@ -115,7 +117,8 @@ app.MapPost("/check", async (CheckRequest req, PageRenderer renderer, VerdictEng
         return Results.Json(new { error = "busy" }, statusCode: StatusCodes.Status503ServiceUnavailable);
     }
 
-    var check = await verdicts.EvaluateAsync(render, req.UseLlm ?? true, ct);
+    var auditPool = string.Equals(req.LlmPool, "audit", StringComparison.OrdinalIgnoreCase);
+    var check = await verdicts.EvaluateAsync(render, req.UseLlm ?? true, ct, auditPool);
     log.LogInformation(
         "check {Url} -> {Verdict} score={Score} rules={RuleVerdict}/{RuleScore} brand={Brand} llm={Llm} {Ms}ms",
         render.RequestedUrl, check.Verdict, check.Score, check.RuleVerdict, check.RuleScore, check.Brand,

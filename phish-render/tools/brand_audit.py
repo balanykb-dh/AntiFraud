@@ -30,6 +30,7 @@ import shutil
 import socket
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -63,7 +64,32 @@ PARKED_MARKERS = [
     "parked free", "parkingcrew", "sedo", "dan.com", "afternic", "godaddy.com/domainsearch", "hugedomains",
     "продається домен", "домен продається", "домен продается", "this domain has been registered", "coming soon",
     "index of /", "welcome to nginx", "apache2 ubuntu default page", "it works!", "default web site page",
+    "підтримується сервісом nic.ua", "поддерживается сервисом nic.ua", "domain is available to be registered",
+    "is registered, but may still be available", "припарковано безкоштовно", "parked free of charge",
+    "get this domain", "отримати цей домен",
 ]
+# Not sites at all: cloud proxies, router and NAS dynamic DNS, hosting control-panel hostnames. Never rendered.
+SERVICE_SUFFIXES = (
+    "mcas.ms", "admin-mcas.ms", "keenetic.link", "keenetic.pro", "keenetic.io", "keenetic.name", "quickconnect.to",
+    "synology.me", "myqnapcloud.com", "duckdns.org", "ddns.net", "no-ip.org", "hopto.org", "dynv6.net", "cloud-ip.cc",
+    "regruhosting.ru", "hostingerapp.com",
+)
+# cPanel/mail hostnames: mail.x.com is x.com seen through the mail server; checked once as x.com.
+SERVICE_PREFIXES = (
+    "cpanel.", "webmail.", "webdisk.", "whm.", "autodiscover.", "autoconfig.", "cpcalendars.", "cpcontacts.",
+    "mail.", "pop.", "smtp.", "imap.", "mx.", "ftp.", "ns1.", "ns2.",
+)
+MULTI_SUFFIXES = {
+    "com.ua", "in.ua", "kiev.ua", "kyiv.ua", "org.ua", "net.ua", "pp.ua", "co.ua", "biz.ua", "gov.ua", "edu.ua",
+    "if.ua", "lviv.ua", "od.ua", "dp.ua", "kh.ua", "zp.ua", "te.ua", "lg.ua", "co.uk", "org.uk", "com.pl", "com.tr",
+    "com.br", "com.au", "co.za", "my.id", "co.id", "web.id", "com.ru", "msk.ru", "spb.ru",
+}
+# Categories worth a person's time: shown in detail in summary.md, everything else only counted.
+ACTIONABLE = ["ймовірний клон", "клон лише для відвідувачів з реклами", "згадує бренд — перевірити вручну",
+              "домен активний, сайт вимкнений"]
+LISTED = ["ймовірно домен бренду", "перенаправляє на офіційний сайт"]
+MATCH_ORDER = {"точна назва": 0, "окремим словом": 1, "злитно з іншим словом": 2, "схоже написання": 3,
+               "всередині іншого слова": 4}
 
 
 # ---------- candidates ----------
@@ -299,7 +325,8 @@ def ad_query():
 
 
 def check(domain, key, ad_visit=False):
-    payload = {"mobile": True, "followCta": True, "useLlm": True, "passWarning": True}
+    # llmPool=audit: a separate daily LLM quota, so a big audit never starves ordinary checks.
+    payload = {"mobile": True, "followCta": True, "useLlm": True, "passWarning": True, "llmPool": "audit"}
     if ad_visit:
         # The model reads utm/fbclid as a sign of a paid lure and over-flags; the ad visit is only compared.
         payload.update(referer=AD_REFERER, useLlm=False)
@@ -339,33 +366,107 @@ def _vcard(entity, field):
     return ""
 
 
-def registrar_info(domain):
-    """(registrar name, abuse e-mail) from RDAP; rdap.org redirects to the zone's registry."""
-    url = "https://rdap.org/domain/" + urllib.parse.quote(registrable(domain))
+_RDAP_CACHE = {}
+_RDAP_LOCK = threading.Lock()
+
+
+def rdap_info(domain):
+    """Registrar, abuse e-mail and name servers from RDAP (rdap.org redirects to the zone's registry).
+    Cached per registrable domain: z.bukovel.net and torba.bukovel.net are one lookup."""
+    reg = registrable(domain)
+    with _RDAP_LOCK:
+        if reg in _RDAP_CACHE:
+            return _RDAP_CACHE[reg]
+    info = {"registrar": "", "abuse": "", "ns": set()}
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rdap+json"})
+        req = urllib.request.Request("https://rdap.org/domain/" + urllib.parse.quote(reg),
+                                     headers={"User-Agent": UA, "Accept": "application/rdap+json"})
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = json.load(resp)
+        for ent in data.get("entities") or []:
+            if "registrar" not in (ent.get("roles") or []):
+                continue
+            info["registrar"] = _vcard(ent, "fn") or info["registrar"]
+            for sub in ent.get("entities") or []:
+                if "abuse" in (sub.get("roles") or []):
+                    info["abuse"] = _vcard(sub, "email") or info["abuse"]
+        info["ns"] = {str(n.get("ldhName") or "").lower().rstrip(".") for n in data.get("nameservers") or []} - {""}
     except Exception:  # noqa: BLE001 - best effort, the report says "unknown"
-        return "", ""
-    name, abuse = "", ""
-    for ent in data.get("entities") or []:
-        if "registrar" not in (ent.get("roles") or []):
-            continue
-        name = _vcard(ent, "fn") or name
-        for sub in ent.get("entities") or []:
-            if "abuse" in (sub.get("roles") or []):
-                abuse = _vcard(sub, "email") or abuse
-    return name, abuse
+        pass
+    with _RDAP_LOCK:
+        _RDAP_CACHE[reg] = info
+    return info
+
+
+def registrar_key(name):
+    """'Internet Invest, Ltd. dba Imena.ua' and 'Internet Invest LLC' are the same registrar."""
+    return " ".join(re.findall(r"[a-z0-9]+", (name or "").lower())[:2])
+
+
+def likely_brand_owned(host, name, info, age_days, official_infos):
+    """The brand's own spare domain (bukovel.net, moneyveo.com.ua), not a clone: exactly the brand name in another
+    zone AND the same DNS servers as the official site, or the same registrar for over two years.
+    A fresh look-alike shares neither."""
+    if site_label(host) != name:
+        return False
+    for off in official_infos:
+        if info["ns"] and info["ns"] & off["ns"]:
+            return True
+        if (age_days or 0) > 730 and info["registrar"] and registrar_key(info["registrar"]) == registrar_key(off["registrar"]):
+            return True
+    return False
 
 
 # ---------- classification ----------
 
 def registrable(host):
     parts = host.lower().strip(".").split(".")
-    if len(parts) >= 3 and (".".join(parts[-2:]) in {"com.ua", "in.ua", "kiev.ua", "org.ua", "net.ua", "co.uk", "com.pl"}):
+    if len(parts) >= 3 and ".".join(parts[-2:]) in MULTI_SUFFIXES:
         return ".".join(parts[-3:])
     return ".".join(parts[-2:])
+
+
+def site_label(host):
+    """bukovel.com.ua -> bukovel; z.bukovel.net -> bukovel."""
+    return registrable(host).split(".")[0]
+
+
+def service_host(host):
+    return any(host == s or host.endswith("." + s) for s in SERVICE_SUFFIXES)
+
+
+def strip_service_prefix(host):
+    for p in SERVICE_PREFIXES:
+        if host.startswith(p) and host.count(".") >= 2:
+            return host[len(p):]
+    return host
+
+
+def name_match(host, name):
+    """How the brand name sits in the domain. Bukovel is a place and Karabas a common word: karabash.ru or
+    karabasakhome.com contain the letters but not the brand, and must not crowd out real look-alikes."""
+    labels = registrable(host).split(".")[:1] + host[:-len(registrable(host))].strip(".").split(".")
+    labels = [lab for lab in labels if lab]
+    best = "схоже написання"
+    for lab in labels:
+        if name not in lab:
+            continue
+        if lab == name:
+            return "точна назва"
+        i = lab.find(name)
+        before, after = lab[:i], lab[i + len(name):]
+        rest = (before + after).strip("-")
+        bounded = (not before or before.endswith("-") or before[-1].isdigit()) and \
+                  (not after or after.startswith("-") or after[0].isdigit())
+        if bounded or rest in AFFIXES:
+            found = "окремим словом"
+        elif (not before or not after) and len(rest) >= 3:
+            found = "злитно з іншим словом"
+        else:
+            found = "всередині іншого слова"
+        if MATCH_ORDER[found] < MATCH_ORDER[best] or best == "схоже написання":
+            best = found
+    return best
 
 
 def host_of(url):
@@ -375,7 +476,7 @@ def host_of(url):
         return ""
 
 
-def classify(res, official, brand_word):
+def classify(res, official, brand_word, owned=False, match="точна назва"):
     render = res.get("render") or {}
     verdict = res.get("verdict", "error")
     final_host = host_of(render.get("finalUrl") or "")
@@ -389,11 +490,22 @@ def classify(res, official, brand_word):
         return "припаркований або продається"
     if "dns resolution error" in text or "error 1001" in text:
         return "домен активний, сайт вимкнений"  # still pointed at Cloudflare: the clone can return any minute
-    imitates = brand_word in text or brand_word in (render.get("title") or "").lower() \
-        or (llm.get("isPhishing") and brand_word in (llm.get("brand") or "").lower())
-    if verdict == "phishing" or (verdict == "suspicious" and imitates):
+    if owned:
+        return "ймовірно домен бренду"
+    in_title = brand_word in (render.get("title") or "").lower()
+    imitates = brand_word in text or (llm.get("isPhishing") and brand_word in (llm.get("brand") or "").lower())
+    if llm and not llm.get("error"):
+        # The model saw the page: trust it over the letters in the domain name.
+        sure = llm.get("isPhishing") and (llm.get("confidence") or 0) >= 0.75
+        if sure and imitates:
+            return "ймовірний клон"
+        if (llm.get("isPhishing") or verdict == "phishing") and imitates:
+            return "згадує бренд — перевірити вручну"
+        return "сторонній сайт"
+    # Rules only (LLM off or out of quota): a clone needs a "phishing" verdict, not just the name in the domain.
+    if verdict == "phishing" and imitates:
         return "ймовірний клон"
-    if imitates:
+    if imitates and (in_title or MATCH_ORDER.get(match, 9) <= 1):
         return "згадує бренд — перевірити вручну"
     return "сторонній сайт"
 
@@ -433,7 +545,14 @@ def main():
         host = host.lower().strip().replace("[.]", ".")
         if host:
             cands[host] = "з публікацій / скарг"
-    print(f"    кандидатів для перевірки DNS: {len(cands)}", flush=True)
+    services = sorted(h for h in cands if service_host(h))
+    for h in services:
+        cands.pop(h)
+    for h in list(cands):
+        parent = strip_service_prefix(h)
+        if parent != h:
+            cands.setdefault(parent, cands.pop(h))
+    print(f"    кандидатів для перевірки DNS: {len(cands)} (службових адрес пропущено: {len(services)})", flush=True)
 
     print("==> DNS: які з них існують", flush=True)
     hosts = list(cands)
@@ -448,6 +567,8 @@ def main():
         w = csv.writer(f)
         w.writerow(["domain", "first_certificate", "resolves_now"])
         for host, when in sorted(ct.items(), key=lambda kv: kv[1] or "", reverse=True):
+            if service_host(host) or strip_service_prefix(host) != host:
+                continue  # proxies, routers, cpanel./mail. twins: no news for the monitor
             state = "офіційний" if registrable(host) in official else ("так" if ips.get(host) else "ні")
             w.writerow([host, when, state])
 
@@ -456,6 +577,10 @@ def main():
     if off.get("screenshotJpeg"):
         with open(os.path.join(args.out, "official.jpg"), "wb") as f:
             f.write(base64.b64decode(off["screenshotJpeg"]))
+
+    official_infos = [rdap_info(d) for d in sorted(official)]
+    for d, info in zip(sorted(official), official_infos):
+        print(f"    {d}: реєстратор {info['registrar'] or '?'}, DNS {', '.join(sorted(info['ns'])) or '?'}", flush=True)
 
     print(f"==> Рендер і вердикт для {len(live)} живих доменів (звичайний візит і візит «з реклами»)", flush=True)
     rows = []
@@ -474,11 +599,10 @@ def main():
         with open(os.path.join(args.out, f"{n}{tag}.json"), "w", encoding="utf-8") as f:
             json.dump(res, f, ensure_ascii=False, indent=2)
 
-    def needs_ad_visit(plain):
+    def needs_ad_visit(plain, category):
         """Cloaking fake shops live on fresh domains. An old site (a hotel in Bukovel, a blog) or a page that
         already shows the clone gains nothing from a second visit, and a popular brand has hundreds of those."""
-        category = classify(plain, official, name)
-        if category in ("перенаправляє на офіційний сайт", "ймовірний клон", "неактивний"):
+        if category in ("перенаправляє на офіційний сайт", "ймовірний клон", "неактивний", "ймовірно домен бренду"):
             return False
         age = (plain.get("domainAge") or {}).get("ageDays")
         return age is None or age < 365
@@ -486,22 +610,28 @@ def main():
     def work(item):
         n, host = item
         plain = check(host, key)
-        ad = check(host, key, ad_visit=True) if needs_ad_visit(plain) else None
-        return n, host, plain, ad
+        info = rdap_info(host)
+        age = plain.get("domainAge") or {}
+        aged = age.get("domain") or ""
+        age_days = age.get("ageDays") if aged and (host == aged or host.endswith("." + aged)) else None
+        match = name_match(host, name)
+        owned = likely_brand_owned(host, name, info, age_days, official_infos)
+        category = classify(plain, official, name, owned, match)
+        ad = check(host, key, ad_visit=True) if needs_ad_visit(plain, category) else None
+        return n, host, plain, ad, info, owned, match, category
 
     def llm_text(res):
         llm = res.get("llm") or {}
         return "" if not llm else (llm.get("error") or f"{llm.get('isPhishing')}/{llm.get('confidence', 0):.2f}: {llm.get('reason') or ''}")
 
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        for n, host, res, ad in pool.map(work, enumerate(live, 1)):
+        for n, host, res, ad, info, owned, match, category in pool.map(work, enumerate(live, 1)):
             save_shots(res, n, "")
-            category = classify(res, official, name)
             cloaked = False
             ad_category = ""
             if ad is not None:
                 save_shots(ad, n, "-ad")
-                ad_category = classify(ad, official, name)
+                ad_category = classify(ad, official, name, owned, match)
                 cloaked = shows_other_page(res, ad, name)
                 if cloaked and ad_category == "ймовірний клон" and category != "ймовірний клон":
                     category = "клон лише для відвідувачів з реклами"
@@ -509,9 +639,10 @@ def main():
             ad_render = (ad or {}).get("render") or {}
             cta = render.get("ctaStep") or {}
             age = res.get("domainAge") or {}
-            registrar, abuse = ("", "") if category == "перенаправляє на офіційний сайт" else registrar_info(host)
+            registrar, abuse = info["registrar"], info["abuse"]
             rows.append({
-                "n": n, "domain": host, "source": cands[host], "first_certificate": ct.get(host) or ct.get("www." + host, ""),
+                "n": n, "domain": host, "name_match": match,
+                "source": cands[host], "first_certificate": ct.get(host) or ct.get("www." + host, ""),
                 "ips": " ".join(ips[host][:3]),
                 "category": category, "verdict": res.get("verdict", "error"), "score": res.get("score", ""),
                 "final_url": render.get("finalUrl") or "", "title": (render.get("title") or "")[:120],
@@ -532,7 +663,7 @@ def main():
             print(f"    [{n}/{len(live)}] {host:<40} {category:<34} {res.get('verdict', 'error')}{note}", flush=True)
 
     rows.sort(key=lambda r: r["n"])
-    fields = ["n", "domain", "source", "first_certificate", "ips", "category", "verdict", "score", "final_url", "title",
+    fields = ["n", "domain", "name_match", "source", "first_certificate", "ips", "category", "verdict", "score", "final_url", "title",
               "passed_warning", "has_card", "has_password", "cta", "domain_age_days", "registered", "registrar", "abuse_email",
               "llm", "reasons",
               "ad_visit_differs", "ad_visit_category", "ad_visit_verdict", "ad_visit_title", "ad_visit_llm"]
@@ -544,24 +675,44 @@ def main():
     counts = {}
     for r in rows:
         counts[r["category"]] = counts.get(r["category"], 0) + 1
+    llm_seen = sum(1 for r in rows if r["llm"].startswith(("True/", "False/")))
+    llm_failed = sum(1 for r in rows if r["llm"] and not r["llm"].startswith(("True/", "False/")))
     lines = [f"# Аудит клонів: {name}", "",
              f"- Офіційні домени: {', '.join(sorted(official))}",
              f"- Імен у журналі сертифікатів: {len(ct)}" + ("" if ct_complete else " (неповно: crt.sh не віддав навіть офіційний сайт)"),
              *[f"  - {note}" for note in ct_notes],
              f"- Перевірено варіантів назви: {len(cands)}, живих: {len(live)}",
+             f"- Службових адрес пропущено (проксі, роутери, панелі хостингу): {len(services)}",
+             f"- LLM переглянула сторінок: {llm_seen}" + (f"; недоступна для {llm_failed} — там вердикт лише правил" if llm_failed else ""),
              f"- Тривалість: {(time.time() - t0) / 60:.1f} хв", "", "| Категорія | Доменів |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(counts.items(), key=lambda kv: -kv[1])]
-    lines += ["", "## Живі домени", ""]
-    for r in rows:
-        lines.append(f"- **{r['n']}. {r['domain']}** — {r['category']} ({r['verdict']}, {r['score']}); {r['source']}")
-        lines.append(f"  - {r['title']} → {r['final_url']}")
-        if r["registrar"] or r["abuse_email"]:
-            lines.append(f"  - Реєстратор: {r['registrar'] or 'невідомо'}; скарги: {r['abuse_email'] or 'невідомо'}")
-        if r["passed_warning"]:
-            lines.append(f"  - Cloudflare показував «{r['passed_warning']}»; скриншот — сторінка за попередженням")
-        lines.append(f"  - {r['reasons']}")
-        if r["ad_visit_differs"] == "так":
-            lines.append(f"  - Візит «з реклами» показує інше: {r['ad_visit_title']} ({r['ad_visit_category']}, {r['ad_visit_verdict']})")
+
+    def ranked(category):
+        return sorted((r for r in rows if r["category"] == category),
+                      key=lambda r: (MATCH_ORDER.get(r["name_match"], 9), -int(r["score"] or 0)))
+
+    for category in ACTIONABLE:
+        found = ranked(category)
+        if not found:
+            continue
+        lines += ["", f"## {category[0].upper() + category[1:]} ({len(found)})", ""]
+        for r in found:
+            lines.append(f"- **{r['n']}. {r['domain']}** ({r['name_match']}; {r['verdict']}, {r['score']}; "
+                         f"вік {r['domain_age_days'] or '?'} дн.) — {r['source']}")
+            lines.append(f"  - {r['title']} → {r['final_url']}")
+            if r["registrar"] or r["abuse_email"]:
+                lines.append(f"  - Реєстратор: {r['registrar'] or 'невідомо'}; скарги: {r['abuse_email'] or 'невідомо'}")
+            if r["passed_warning"]:
+                lines.append(f"  - Cloudflare показував «{r['passed_warning']}»; скриншот — сторінка за попередженням")
+            lines.append(f"  - {r['reasons'][:600]}")
+            if r["ad_visit_differs"] == "так":
+                lines.append(f"  - Візит «з реклами» показує інше: {r['ad_visit_title']} ({r['ad_visit_category']}, {r['ad_visit_verdict']})")
+    for category in LISTED:
+        found = ranked(category)
+        if found:
+            lines += ["", f"## {category[0].upper() + category[1:]} ({len(found)})", "",
+                      ", ".join(r["domain"] for r in found)]
+    lines += ["", "Решта категорій — лише в candidates.csv."]
     with open(os.path.join(args.out, "summary.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
     print("\n" + "\n".join(lines[:16]))

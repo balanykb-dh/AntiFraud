@@ -10,9 +10,11 @@ namespace RenderService;
 public sealed record RenderRequest(
     string? Url, bool? Mobile, bool? FullPage, bool? IncludeHtml, bool? FollowCta, string? Referer = null, bool? PassWarning = null);
 
-/// <summary>Body of POST /check: render + verdict.</summary>
+/// <summary>Body of POST /check: render + verdict.
+/// LlmPool: "audit" counts LLM calls against LLM_AUDIT_DAILY_LIMIT, so brand audits never use up the main quota.</summary>
 public sealed record CheckRequest(
-    string? Url, bool? Mobile, bool? FollowCta, bool? UseLlm, string? Referer = null, bool? PassWarning = null);
+    string? Url, bool? Mobile, bool? FollowCta, bool? UseLlm, string? Referer = null, bool? PassWarning = null,
+    string? LlmPool = null);
 
 public sealed record RenderOptions(
     bool Mobile, bool FullPage, bool IncludeHtml, bool FollowCta, string? Referer = null, bool PassWarning = false);

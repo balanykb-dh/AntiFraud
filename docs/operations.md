@@ -73,7 +73,8 @@ cd ~/phish-render
 | `MAX_REQUESTS_PER_PAGE` | 400 | Ліміт запитів сторінки |
 | `ANTHROPIC_API_KEY` | — | Ключ Claude; без нього лише правила |
 | `LLM_MODEL` | `claude-haiku-5-5` | Модель судді |
-| `LLM_DAILY_LIMIT` | 300 | Викликів LLM на добу |
+| `LLM_DAILY_LIMIT` | 300 | Викликів LLM на добу для звичайних перевірок |
+| `LLM_AUDIT_DAILY_LIMIT` | 2000 | Окремий ліміт для аудитів брендів (`llmPool: "audit"`), ≈$1 на день |
 | `RENDER_MEM_LIMIT` | 2g | Ліміт пам'яті контейнера (docker compose) |
 | `BROWSER_CHANNEL` | — | `default`, якщо Chromium не стартує з помилкою про channel |
 
