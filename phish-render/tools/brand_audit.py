@@ -492,8 +492,10 @@ def classify(res, official, brand_word, owned=False, match="точна назв�
         return "домен активний, сайт вимкнений"  # still pointed at Cloudflare: the clone can return any minute
     if owned:
         return "ймовірно домен бренду"
-    in_title = brand_word in (render.get("title") or "").lower()
-    imitates = brand_word in text or (llm.get("isPhishing") and brand_word in (llm.get("brand") or "").lower())
+    # Whole word only: "karabast" or "karabasoglu" in the text is not the Karabas brand.
+    word = re.compile(rf"(?<![a-z0-9]){re.escape(brand_word)}(?![a-z0-9])")
+    in_title = bool(word.search((render.get("title") or "").lower()))
+    imitates = bool(word.search(text)) or (llm.get("isPhishing") and brand_word in (llm.get("brand") or "").lower())
     if llm and not llm.get("error"):
         # The model saw the page: trust it over the letters in the domain name.
         sure = llm.get("isPhishing") and (llm.get("confidence") or 0) >= 0.75
